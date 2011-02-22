@@ -18,6 +18,14 @@ Installation
 - Place OpenLayers slim [1] in sites/all/libraries
 - If you work with a pre Feb 4 version of Views, you need to apply related terms
   patch.
+- Clear caches.
 
 [1] https://github.com/developmentseed/openlayers_slim/downloads
 [2] http://drupal.org/node/1021942
+
+Demo content
+------------
+
+For viewing demo content, enable the module "Demo content for Openpublic
+Projects" module that ships with the OpenPublic Project Mapper. Enable it on
+`admin/modules` or with `drush en openpublic_projects_demo_content`.
