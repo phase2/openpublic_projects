@@ -1,0 +1,13 @@
+<?php
+
+include_once('openpublic_projects.features.inc');
+
+/**
+ * Implementation of hook_views_api().
+ */
+function openpublic_projects_views_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'openpublic_projects')
+  );
+}
