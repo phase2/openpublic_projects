@@ -1,0 +1,5 @@
+core = "7.x"
+dependencies[] = "openpublic_projects"
+name = "Demo content for Openpublic Projects"
+package = "Features"
+php = "5.2.4"
