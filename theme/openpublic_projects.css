@@ -1,7 +1,7 @@
 #outer-wrapper #wrap-inner {
   background: repeat-y scroll 0 0 #FFFFFF;
   }
-#main-wrapper #main {
+.page-projects #main-wrapper #main {
   width: 955px;
   }
  
@@ -36,7 +36,7 @@ a.active.progress-disabled {
   top: 0px;
   right: 0px;
   padding: 0;
-  background-image: url(../img/bg-black75.png);
+  background-image: url(bg-black75.png);
   z-index: 1000;
   -moz-border-radius-bottomleft: 10px;
 }
