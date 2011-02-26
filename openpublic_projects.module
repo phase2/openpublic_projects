@@ -11,3 +11,7 @@ function openpublic_projects_views_views_api() {
     'path' => drupal_get_path('module', 'openpublic_projects')
   );
 }
+
+function openpublic_projects_init() {
+  drupal_add_css(drupal_get_path("module", 'openpublic_projects') . '/theme/openpublic_projects.css', 'file');
+}
