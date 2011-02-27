@@ -8,6 +8,12 @@ function openpublic_projects_demo_content_enable() {
   openpublic_projects_demo_content_import('openpublic_projects', 'projects.csv');
 }
 
+function openpublic_projects_demo_content_disable() {
+  $importer_id = 'openpublic_projects';
+  feeds_source($importer_id)->startClear();
+  $importer_id = 'openpublic_projects_locations';
+  feeds_source($importer_id)->startClear();
+}
 /**
  * Imports a CSV file.
  */
