@@ -1,7 +1,7 @@
 <?php
 
 
-function openpublic_projects_appstore_app_info() {
+function openpublic_projects_apps_app_info() {
   return array(
     'configure form' => 'openpublic_projects_app_configure_form'
   );
