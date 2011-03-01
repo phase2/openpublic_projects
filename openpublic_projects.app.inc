@@ -20,10 +20,10 @@ function openpublic_projects_app_configure_form() {
   );
   $form['locations']['location_import'] = array(
     '#markup' => '
-    <p>One can tag each project with a City or other location, but the location must first exist in the system.  To add locations one needs to know the longatued and latatude of each location.</p>
-    <ul><li>One can inport new locations using a cvs file with three columns (Name, Longaturd, Latatude) on the ' . l(t('Import Location'), 'import/openpublic_projects_locations', array('query' =>drupal_get_destination())). '.</li>
-        <li>One can Manage the locations list by hand on the '. l(t('Taxonomy page'), 'admin/structure/taxonomy/location', array('query'=>drupal_get_destination())) . '.</li>
-    </ul>'
+   <p>One can tag each project with a City or other location, but the location must first exist in the system.  To add locations one needs to know the longitude and latitude of each location.</p>
+   <ul><li>One can import new locations using a cvs file with three columns (header row is "name", "lat", "lon") on the ' . l(t('Import Location Page'), 'import/openpublic_projects_locations', array('query' =>drupal_get_destination())). '.</li>
+      <li>One can Manage the locations list by hand on the '. l(t('Taxonomy page'), 'admin/structure/taxonomy/location', array('query'=>drupal_get_destination())) . '.</li>
+   </ul>'
   );
 
   $files = scandir(drupal_get_path('module', 'openpublic_projects') . "/locations/");
@@ -35,13 +35,20 @@ function openpublic_projects_app_configure_form() {
     '#title' => "Import Cites From:",
     '#type' => "select",
     '#options' => $options,
-    '#descriptions' => 'Import all of the cities in one state into locations',
+    '#description' => 'Import all of the cities in one state into locations',
   );
   $form['locations']['location_file_import'] = array(
     '#value' => "Import",
     '#type' => "button",
     '#submit' => array('openpublic_projects_app_configure_form_submit_import_location'),
     '#executes_submit_callback' => TRUE,
+  );
+  $form['projects'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Projectss'),
+  );
+  $form['projects']['projects_import'] = array(
+    '#markup' => 'One can create new project on the ' . l(t('Create Project Page'), 'node/add/project', array('query' =>drupal_get_destination())) . ".",
   );
     
   return $form;
