@@ -3,9 +3,14 @@
 
 function openpublic_projects_apps_app_info() {
   return array(
-    'configure form' => 'openpublic_projects_app_configure_form'
+    'configure form' => 'openpublic_projects_app_configure_form',
+    'post install callback' => 'openpublic_projects_post_install'
   );
 }
+
+/*
+ * Configure form for the app page
+ */
 function openpublic_projects_app_configure_form() {
   $form = array();
 
@@ -25,12 +30,12 @@ function openpublic_projects_app_configure_form() {
   array_shift($files);
   array_shift($files);
 
-  $options = array_combine($files, array_map(create_function('$a' , 'return substr($a, 0,2) . "(".count(file(drupal_get_path("module", "openpublic_projects") . "/locations/$a")).")";'), $files));
-  dpm($options);
+  $options = array_combine($files, array_map(create_function('$a' , 'return substr($a, 0,2) . " (".count(file(drupal_get_path("module", "openpublic_projects") . "/locations/$a")).")";'), $files));
   $form['locations']['location_file'] = array(
     '#title' => "Import Cites From:",
     '#type' => "select",
     '#options' => $options,
+    '#descriptions' => 'Import all of the cities in one state into locations',
   );
   $form['locations']['location_file_import'] = array(
     '#value' => "Import",
@@ -42,7 +47,6 @@ function openpublic_projects_app_configure_form() {
   return $form;
 }
 function openpublic_projects_app_configure_form_submit_import_location($form, &$form_state) {
-  dpm($form_state);
   openpublic_projects_import($form_state['values']['location_file']);
 }
 
@@ -78,4 +82,8 @@ function openpublic_projects_import($file) {
   catch (Exception $e) {
     drupal_set_message(t('Error importing demo content. ' . $e->getMessage()), 'error');
   }
+}
+function openpublic_projects_post_install() {
+  module_load_include("inc", "openpublic_projects", "openpublic_projects.app");
+  openpublic_projects_import('US.csv');
 }
