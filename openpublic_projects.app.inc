@@ -71,7 +71,13 @@ function openpublic_projects_import($file) {
   // from the public directory.
   if (!file_exists($filepath)) {
     $src = file_get_contents(drupal_get_path('module', 'openpublic_projects') . "/locations/{$file}");
-    file_put_contents($filepath, $src);
+    if($src) {
+      file_put_contents($filepath, $src);
+    }
+    else {
+      drupal_set_message(t('Error importing content. No such file ' . $file), 'error');
+      return;
+    }
   }
   try {
     // Ensure importer exists.
@@ -91,6 +97,5 @@ function openpublic_projects_import($file) {
   }
 }
 function openpublic_projects_post_install() {
-  module_load_include("inc", "openpublic_projects", "openpublic_projects.app");
   openpublic_projects_import('US.csv');
 }
