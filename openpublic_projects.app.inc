@@ -32,7 +32,7 @@ function openpublic_projects_app_configure_form() {
 
   $options = array_combine($files, array_map(create_function('$a' , 'return substr($a, 0,2) . " (".count(file(drupal_get_path("module", "openpublic_projects") . "/locations/$a")).")";'), $files));
   $form['locations']['location_file'] = array(
-    '#title' => "Import Cites From:",
+    '#title' => "Import Cities From:",
     '#type' => "select",
     '#options' => $options,
     '#description' => 'Import all of the cities in one state into locations',
@@ -45,10 +45,10 @@ function openpublic_projects_app_configure_form() {
   );
   $form['projects'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Projectss'),
+    '#title' => t('Projects'),
   );
   $form['projects']['projects_import'] = array(
-    '#markup' => 'One can create new project on the ' . l(t('Create Project Page'), 'node/add/project', array('query' =>drupal_get_destination())) . ".",
+    '#markup' => 'One can create new projectis on the ' . l(t('Create Project Page'), 'node/add/project', array('query' =>drupal_get_destination())) . ".",
   );
     
   return $form;
