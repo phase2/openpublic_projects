@@ -85,7 +85,7 @@ function openpublic_projects_node_info() {
     'project' => array(
       'name' => t('Project'),
       'base' => 'node_content',
-      'description' => t('Add an entry to the "Our work" section.'),
+      'description' => t('Create a project entry and see it show up on a map!'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
