@@ -116,7 +116,7 @@ a.active.progress-disabled {
   height: 120px;
   margin: 0 5px 10px 5px;
   float: left;
-  overflow:hidden;
+  /*overflow:hidden;*/
   position:relative;
   background-color: #587A90;
 }
